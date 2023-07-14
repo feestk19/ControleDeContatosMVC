@@ -4,6 +4,7 @@ namespace ControleDeContatos.Controllers
 {
     public class ContatoController : Controller
     {
+        #region ACTIONS
         public IActionResult Index()
         {
             return View();
@@ -23,5 +24,10 @@ namespace ControleDeContatos.Controllers
         {
             return View();
         }
+        #endregion
+
+        #region MÉTODOS
+        
+        #endregion
     }
 }
