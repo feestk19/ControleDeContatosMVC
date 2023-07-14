@@ -1,4 +1,5 @@
 using ControleDeContatos.Data;
+using ControleDeContatos.Repositorio;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -17,6 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
         o.UseSqlServer(connString);
     });
 
+builder.Services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
 
 
 var app = builder.Build();

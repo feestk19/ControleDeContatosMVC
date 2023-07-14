@@ -1,4 +1,6 @@
-﻿namespace ControleDeContatos.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ControleDeContatos.Models
 {
     public class ContatoModel
     {
@@ -10,16 +12,19 @@
         /// <summary>
         /// Nome do contato
         /// </summary>
+        [Required]
         public string Nome { get; set; }
 
         /// <summary>
         /// Email do contato
         /// </summary>
+        [Required]
         public string Email { get; set; }
 
         /// <summary>
         /// Celular do contato
         /// </summary>
+        [Required]
         public string Celular { get; set; }
     }
 }
