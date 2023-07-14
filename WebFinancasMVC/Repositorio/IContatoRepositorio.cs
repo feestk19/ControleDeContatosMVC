@@ -6,6 +6,14 @@ namespace ControleDeContatos.Repositorio
     {
         ContatoModel Cadastrar(ContatoModel contato);
 
+        ContatoModel Alterar(ContatoModel contato);
+
+        bool Apagar(int id);
+
+        ContatoModel ListarPorId(int id);
+
         List<ContatoModel> BuscarTodos();
+
+
     }
 }

@@ -1,16 +1,19 @@
 ﻿@model ControleDeContatos.Models.ContatoModel;
 @{
-    ViewData["Title"] = "Cadastro de Contatos";
+    ViewData["Title"] = "Alterar Contato";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Cadastrar Contato</h1>
+
+    <h1 class="display-4">Alterar Contato</h1>
+
+
 </div>
 
 @if (TempData["MensagemSucesso"] != null)
 {
     <!-- Modal -->
-    <div class="modal fade" id="modalConfirmacaoCadastro" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalConfirmacaoAlteracaoSucesso" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -21,6 +24,7 @@
                     @TempData["MensagemSucesso"]
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" asp-controller="Contato" asp-action="Index" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
@@ -29,7 +33,7 @@
 
 @if (TempData["MensagemErro"] != null)
 {
-    <div class="modal fade" id="modalConfirmacaoCadastro" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalConfirmacaoAlteracaoSucesso" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -40,35 +44,37 @@
                     @TempData["MensagemErro"]
                 </div>
                 <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" asp-controller="Contato" asp-action="Index" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>
     </div>
 }
 
-<form asp-controller="Contato" asp-action="Cadastrar" method="post">
+<form asp-controller="Contato" asp-action="Alterar" method="post">
+
+    <input type="hidden" asp-for="Id"/>
     <div class="mb-3">
-        <label for="nome" class="form-label" required>Nome</label>
+        <label for="nome" class="form-label" required="required">Nome</label>
         <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato">
         @Html.ValidationMessageFor(x => x.Nome)
     </div>
 
     <div class="mb-3">
-        <label for="email" class="form-label" required>Email</label>
+        <label for="email" class="form-label" required="required">Email</label>
         <input type="text" asp-for="Email" class="form-control" placeholder="Digite o email do contato">
-        @Html.ValidationMessageFor(x => x.Nome)
+        @Html.ValidationMessageFor(x => x.Email)
     </div>
 
     <div class="mb-3">
-        <label for="nome" class="form-label" required>Celular</label>
+        <label for="nome" class="form-label" required="required">Celular</label>
         <input type="text" asp-for="Celular" class="form-control" placeholder="Digite o celular do contato">
-        @Html.ValidationMessageFor(x => x.Nome)
+        @Html.ValidationMessageFor(x => x.Celular)
     </div>
-
-    <button type="submit" class="btn btn-primary w-100 mb-1" data-bs-toggle="modal" data-bs-target="#modalConfirmacaoCadastro" asp-controller="Contato" asp-action="Cadastrar">Cadastrar</button>
-     <a class="btn btn-secondary w-100" role="button" asp-action="Index" asp-controller="Contato">Voltar</a>
+ 
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary w-100 mb-1" data-bs-toggle="modal" data-bs-target="#modalConfirmacaoAlteracaoSucesso">Alterar</button>
+    <a class="btn btn-secondary w-100" asp-controller="Contato" asp-action="Index" role="button">Voltar</a>
 </form>
-
-
 
 
